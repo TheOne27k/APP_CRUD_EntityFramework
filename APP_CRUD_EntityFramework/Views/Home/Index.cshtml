@@ -1,0 +1,52 @@
+﻿@model List<APP_CRUD_EntityFramework.Models.Empleado>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5>
+            Lista de Empleados
+        </h5>
+    </div>
+    <div class="card-body">
+        <a class="btn btn-success btn-sm" asp-action="Empleado_Detalle" asp-controller="Home" asp-route-idEmpleado="0">
+            Crear Nuevo
+        </a>
+        <hr />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre Completo</th>
+                    <th>Correo</th>
+                    <th>Telefono</th>
+                    <th>Cargo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.TelEmp</td>
+                        <td>@item.MailEmp</td>
+                        <td>@item.TelEmp</td>
+                        <td>@item.oCargo.DesCargo</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" asp-action="Empleado_Detalle" asp-controller="Home" asp-route-idEmpleado="@item.Idempleado">
+                                Editar
+                            </a>
+                            <a class="btn btn-danger btn-sm" asp-action="eliminar" asp-controller="Home" asp-route-idEmpleado="@item.Idempleado">
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
